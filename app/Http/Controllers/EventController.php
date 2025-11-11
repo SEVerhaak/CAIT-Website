@@ -19,10 +19,20 @@ class EventController extends Controller
         $perPage = $request->input('per_page', 5);
         $perPage = in_array($perPage, [5, 10, 20]) ? $perPage : 5;
 
-        $events = Event::orderBy('begin_time', 'desc')->paginate($perPage)->withQueryString();
+        // Start query
+        $query = Event::orderBy('begin_time', 'desc');
+
+        // Apply active filter if user is NOT admin or bestuur
+        $user = $request->user();
+        if (! $user || ! in_array($user->role, ['admin', 'bestuur'])) {
+            $query->where('active', 1);
+        }
+
+        $events = $query->paginate($perPage)->withQueryString();
 
         return view('events.index', compact('events', 'perPage'));
     }
+
 
     public function show(Event $event)
     {

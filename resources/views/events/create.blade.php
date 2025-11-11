@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 dark:text-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+            <div class="bg-primary dark:bg-primary-dark dark:text-white overflow-hidden shadow-sm sm:rounded-lg p-6">
                 @if (session('success'))
                     <div class="mb-4 p-4 bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-200 rounded">
                         {{ session('success') }}

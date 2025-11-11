@@ -17,9 +17,9 @@
             @endif
             {{-- Per page selector --}}
             <form method="GET" class="mb-4 flex items-center space-x-2">
-                <label for="per_page" class="text-gray-700 dark:text-gray-300">Events per page:</label>
+                <label for="per_page" class="text-gray-300 dark:text-gray-300">Events per page:</label>
                 <select name="per_page" id="per_page"
-                        class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-gray-200"
+                        class="rounded-md border-primary dark:bg-primary-dark dark:text-gray-200"
                         onchange="this.form.submit()">
                     <option value="5" {{ $perPage == 5 ? 'selected' : '' }}>5</option>
                     <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>10</option>

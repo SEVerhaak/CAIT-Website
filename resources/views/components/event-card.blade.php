@@ -1,5 +1,5 @@
 <div
-    class="bg-white dark:bg-gray-800 shadow-sm rounded-lg p-4 flex flex-col hover:shadow-lg transition-shadow duration-200">
+    class="bg-primary dark:bg-primary-dark shadow-sm rounded-lg p-4 flex flex-col hover:shadow-lg transition-shadow duration-200">
 
     {{-- Event Image --}}
     @if($event->img)

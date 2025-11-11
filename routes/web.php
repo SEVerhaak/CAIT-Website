@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventRegistrationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,6 +18,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Confirm registration page
+    Route::get('/events/{event}/register', [EventRegistrationController::class, 'confirm'])
+        ->name('events.register.confirm');
+
+    // Actually register the user
+    Route::post('/events/{event}/register', [EventRegistrationController::class, 'register'])
+        ->name('events.register');
+
 });
 
 // -=CUSTOM ROUTES=-
@@ -34,6 +45,8 @@ Route::middleware(['auth', 'role:admin,bestuur'])->group(function () {
     Route::put('/events/{event}', [EventController::class, 'update'])->name('events.update');
     Route::get('/events/{event}/delete', [EventController::class, 'confirmDelete'])->name('events.confirmDelete');
     Route::delete('/events/delete/{event}', [EventController::class, 'destroy'])->name('events.destroy');
+
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
 });
 
 Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
